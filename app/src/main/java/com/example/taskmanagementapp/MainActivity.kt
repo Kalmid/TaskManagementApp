@@ -24,16 +24,13 @@ class MainActivity : ComponentActivity() {
         taskAdapter = TaskAdapter()
         recyclerView.adapter = taskAdapter
 
-
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
-
 
         taskViewModel.allTasks.observe(this, Observer { tasks ->
             tasks?.let {
                 taskAdapter.submitList(it)
             }
         })
-
 
         val fabAddTask = findViewById<FloatingActionButton>(R.id.fabAddTask)
         fabAddTask.setOnClickListener {

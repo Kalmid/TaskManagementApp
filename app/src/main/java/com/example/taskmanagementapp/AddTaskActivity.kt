@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.compose.ui.input.key.Key.Companion.R
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -32,10 +31,16 @@ class AddTaskActivity : ComponentActivity() {
             val taskPriority = etTaskPriority.text.toString().toInt()
             val taskDeadlineStr = etTaskDeadline.text.toString()
 
+            if (taskPriority == null) {
+                Toast.makeText(this, "Invalid priority. Please enter a number.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val date = dateFormat.parse(taskDeadlineStr)
 
             if (date != null) {
+
                 val taskDeadline = date.time
 
                 val task = Task(

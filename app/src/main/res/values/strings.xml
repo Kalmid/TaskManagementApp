@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TaskManagementApp</string>
+    <string name="task_deadline_timestamp">Task Deadline (timestamp)</string>
+    <string name="update_task">Update Task</string>
+    <string name="task_priority_number">Task Priority (number)</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_name">Task Name</string>
 </resources>
