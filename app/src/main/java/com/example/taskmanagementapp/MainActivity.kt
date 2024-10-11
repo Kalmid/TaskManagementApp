@@ -3,6 +3,7 @@ package com.example.taskmanagementapp
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.input.key.Key.Companion.R
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,16 +25,13 @@ class MainActivity : ComponentActivity() {
         taskAdapter = TaskAdapter()
         recyclerView.adapter = taskAdapter
 
-
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
-
 
         taskViewModel.allTasks.observe(this, Observer { tasks ->
             tasks?.let {
                 taskAdapter.submitList(it)
             }
         })
-
 
         val fabAddTask = findViewById<FloatingActionButton>(R.id.fabAddTask)
         fabAddTask.setOnClickListener {

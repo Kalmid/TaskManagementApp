@@ -7,7 +7,6 @@
     android:padding="16dp"
     android:background="?attr/selectableItemBackground">
 
-    <!-- Task Name -->
     <TextView
         android:id="@+id/tvTaskName"
         android:layout_width="wrap_content"
@@ -17,7 +16,6 @@
         android:textStyle="bold"
         android:textColor="@android:color/black"/>
 
-    <!-- Task Description -->
     <TextView
         android:id="@+id/tvTaskDescription"
         android:layout_width="wrap_content"
