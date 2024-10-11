@@ -1,6 +1,5 @@
 package com.example.taskmanagementapp
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,8 +9,10 @@ data class Task(
     val name: String,
     val description: String,
     val priority: Int,
-    val deadline: Long
+    val deadline: Long // Or String, depending on your data type
 )
+
+
 
 
 

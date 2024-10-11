@@ -9,6 +9,7 @@ import androidx.room.Update
 
 @Dao
 interface TaskDao {
+
     @Insert
     suspend fun insert(task: Task)
 
@@ -21,6 +22,7 @@ interface TaskDao {
     @Query("SELECT * FROM task_table ORDER BY priority DESC")
     fun getAllTasks(): LiveData<List<Task>>
 }
+
 
 
 
