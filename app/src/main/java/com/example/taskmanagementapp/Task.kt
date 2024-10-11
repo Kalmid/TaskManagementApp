@@ -9,7 +9,7 @@ data class Task(
     val name: String,
     val description: String,
     val priority: Int,
-    val deadline: Long // Or String, depending on your data type
+    val deadline: Long
 )
 
 
