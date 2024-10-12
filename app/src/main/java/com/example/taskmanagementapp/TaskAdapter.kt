@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.Locale
+
 
 class TaskAdapter(
     private val onUpdate: (Task) -> Unit,
@@ -28,10 +31,14 @@ class TaskAdapter(
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val currentTask = getItem(position)
+
         holder.taskName.text = currentTask.name
         holder.taskDescription.text = currentTask.description
         holder.taskPriority.text = "Priority: ${currentTask.priority}"
-        holder.taskDeadline.text = "Deadline: ${currentTask.deadline}"
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formattedDeadline = dateFormat.format(currentTask.deadline)
+        holder.taskDeadline.text = "Deadline: $formattedDeadline"
 
         holder.itemView.setOnClickListener {
             onUpdate(currentTask)
@@ -53,3 +60,5 @@ class TaskDiffCallback : DiffUtil.ItemCallback<Task>() {
         return oldItem == newItem
     }
 }
+
+

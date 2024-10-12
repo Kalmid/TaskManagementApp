@@ -48,6 +48,8 @@
         android:text="Update Task"
         android:padding="12dp"
         android:minHeight="48dp"
+        android:textColor="@android:color/white"
+        android:background="@color/green"
         android:layout_marginTop="16dp" />
 
 </LinearLayout>
