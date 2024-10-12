@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class TaskAdapter : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallback()) {
+class TaskAdapter(
+    private val onUpdate: (Task) -> Unit,
+    private val onDelete: (Task) -> Unit
+) : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallback()) {
 
     class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val taskName: TextView = itemView.findViewById(R.id.tvTaskName)
@@ -29,6 +32,15 @@ class TaskAdapter : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallba
         holder.taskDescription.text = currentTask.description
         holder.taskPriority.text = "Priority: ${currentTask.priority}"
         holder.taskDeadline.text = "Deadline: ${currentTask.deadline}"
+
+        holder.itemView.setOnClickListener {
+            onUpdate(currentTask)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            onDelete(currentTask)
+            true
+        }
     }
 }
 
