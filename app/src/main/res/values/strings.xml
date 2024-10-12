@@ -5,4 +5,5 @@
     <string name="task_priority_number">Task Priority (number)</string>
     <string name="task_description">Task Description</string>
     <string name="task_name">Task Name</string>
+    <string name="add_new_task">Add New Task</string>
 </resources>

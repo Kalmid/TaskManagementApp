@@ -28,11 +28,11 @@ class AddTaskActivity : ComponentActivity() {
         btnSaveTask.setOnClickListener {
             val taskName = etTaskName.text.toString()
             val taskDescription = etTaskDescription.text.toString()
-            val taskPriority = etTaskPriority.text.toString().toInt()
+            val taskPriority = etTaskPriority.text.toString().toIntOrNull()
             val taskDeadlineStr = etTaskDeadline.text.toString()
 
             if (taskPriority == null) {
-                Toast.makeText(this, "Invalid priority. Please enter a number.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Invalid priority. Please enter a valid number.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -40,7 +40,6 @@ class AddTaskActivity : ComponentActivity() {
             val date = dateFormat.parse(taskDeadlineStr)
 
             if (date != null) {
-
                 val taskDeadline = date.time
 
                 val task = Task(
@@ -54,11 +53,7 @@ class AddTaskActivity : ComponentActivity() {
 
                 finish()
             } else {
-                Toast.makeText(
-                    this,
-                    "Invalid date format. Please use YYYY-MM-DD.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "Invalid date format. Please use YYYY-MM-DD.", Toast.LENGTH_SHORT).show()
             }
         }
     }
